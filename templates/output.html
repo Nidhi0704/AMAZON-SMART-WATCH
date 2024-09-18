@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+    <title>Smart Watch Price Prediction </title>
+    <style>
+        /* Global reset and body styles*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-image: url("static/download.jpeg");
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            background-position: center;
+            background-size: cover;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Container style */
+        #cls {
+            color: rgb(80, 78, 77);
+            background-color: rgba(255, 255, 255, 0.8); /* semi-transparent white background*/
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        /* Form and heading style*/
+        #formm {
+            margin-top: 10px;
+            margin-bottom: 0px;
+            background-color: transparent;
+            margin-left: 30px;
+        }
+
+        #main_h {
+            color: rgb(44, 46, 43);
+            font-size: 30px;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgb(44, 46, 43);
+            margin-bottom: 20px;
+        }
+
+        #par {
+            font-size: 18px;
+            color: rgb(44, 46, 43); /* Darker text color */
+            margin-bottom: 10px;
+        }
+
+        /* Input and button style*/
+        input[type="number"], select {
+            border: 2px solid rgb(44, 46, 43); /* darker the border */
+            border-radius: 8px; /* Rounded corners */
+            height: 40px;
+            font-size: 18px;
+            padding: 0 12px; /* Padding inside the input */
+            width: calc(100% - 24px); /* Adjusted width */
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Light box-shadow */
+        }
+
+        /* button style */
+        #btn, #src {
+            border: none;
+            border-radius: 50px;
+            background-color: rgb(105, 104, 102);
+            width: calc(100% - 24px);
+            height: 40px;
+            font-size: 18px;
+            color: whitesmoke;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #btn:hover, #src:hover {
+            background-color: rgb(125, 124, 122);
+        }
+
+        #pred {
+            margin-left: 10px;
+            color: rgb(19, 18, 18);
+            text-align: center;
+        }
+
+        /* Media query for responsiveness */
+        @media (max-width: 768px) {
+            #cls {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="cls">
+        <form action="{{ url_for('predict') }}" method="post" id="formm">
+            <h2 id="main_h">Enter the values to get the price</h2><br><br>
+            <p id="par"><b>Select your Starp color </b></p>
+            <select name="Strap_color" id="fifth" required="required">
+                <option value="">Select the Strap Color</option>
+                <option value="1">Active Black Strap</option>
+                <option value="2">Beige Strap</option>
+                <option value="3">Black Strap</option>
+                <option value="4">Black-C Strap</option>
+                <option value="5">Black-S Strap</option>
+                <option value="6">Black Rose Gold Strap</option>
+                <option value="7">Black Titanium Strap</option>
+                <option value="8">Blue Strap</option>
+                <option value="9">Blue C Strap</option>
+                <option value="10">Brick Red Strap</option>
+                <option value="11">Brown Strap</option>
+                <option value="12">Burgundy Strap</option>
+                <option value="13">Camo Green Strap</option>
+                <option value="14">Carbon Black Strap</option>
+                <option value="15">Champagne Gold Strap</option>
+                <option value="16">Champagne Strap</option>
+                <option value="17">Charcoal Grey Strap</option>
+                <option value="18">Cherry Blossom Strap</option>
+                <option value="19">Chocolate Brown Strap</option>
+                <option value="20">Chrome Rig Strap</option>
+                <option value="21">Chrome Strap</option>
+                <option value="22">Classic Brown Strap</option>
+                <option value="23">Classic Silver Strap</option>
+                <option value="24">Coal Black Strap</option>
+                <option value="25">Cobalt Blue Strap</option>
+                <option value="26">Copper Black Strap</option>
+                <option value="27">Cream Strap</option>
+                <option value="28">Dark Blue Strap</option>
+                <option value="29">Dark Grey Strap</option>
+                <option value="30">Deep Blue Strap</option>
+                <option value="31">Deep Wine Strap</option>
+                <option value="32">Electric Black Strap</option>
+                <option value="33">Elite Black Strap</option>
+                <option value="34">Elite Silver Strap</option>
+                <option value="35">Forest Green Strap</option>
+                <option value="36">Glossy Black Strap</option>
+                <option value="37">Gold Black Strap</option>
+                <option value="38">Gold Pink Strap</option>
+                <option value="39">Gold SS Strap</option>
+                <option value="40">Gold Strap</option>
+                <option value="41">Green Strap</option>
+                <option value="42">Grey Blue Strap</option>
+                <option value="43">Grey Strap</option>
+                <option value="44">Gun metal Grey Strap</option>
+                <option value="45">Ice Silver Strap</option>
+                <option value="46">Indigo Blue Strap</option>
+                <option value="47">Jet Black Strap</option>
+                <option value="48">Lavish Purple Strap</option>
+                <option value="49">Lunar Black Strap</option>
+                <option value="50">Maroon Strap</option>
+                <option value="51">Metal Black Strap</option>
+                <option value="52">Metallic Black Strap</option>
+                <option value="53">Midnight Black Strap</option>
+                <option value="54">Midnight Gold Strap</option>
+                <option value="55">Multicolor Strap</option>
+                <option value="56">Multicolour Strap</option>
+                <option value="57">NA Strap</option>
+                <option value="58">Navy Blue Strap</option>
+                <option value="59">Olive Green Strap</option>
+                <option value="60">Orange Alpine Strap</option>
+                <option value="61">Orange Strap</option>
+                <option value="62">Persian Blue Strap</option>
+                <option value="63">Pink Strap</option>
+                </select>
+
+                <p id="par"><b>Select the size  of your strap:</b></p>
+                <select name="Size_fits" id="fourth"  required="required">
+                    <option value="">Select Size </option>
+                        <option value="1">Free Size</option>
+                        <option value="2">One Size</option>
+                        <option value="3">Onesize</option>
+                        <option value="4">Regular</option>
+                        <option value="5">Regular Size</option>
+                        <option value="6">Medium</option>
+                        <option value="7">Large</option>
+                        <option value="8">Unisex</option>
+                        <option value="9">Universal</option>
+                        <option value="10">KIDS</option>
+                        <option value="11">Mens</option>
+                    
+                </select>
+
+
+
+                <p id="par"><b>Select your Brand Name</b></p>
+                <select name="Brand_Name" id="third" required="required">
+                    <option value="">Select the Brand Name</option>
+                        <option value="1">alt Hunk</option>
+                        <option value="2">alt OG</option>
+                        <option value="3">Ambrane Wise</option>
+                        <option value="4">Arceus Android</option>
+                        <option value="5">beatXP Duke</option>
+                        <option value="6">beatXP Evoke</option>
+                        <option value="7">beatXP Marv</option>
+                        <option value="8">beatXP Nexus</option>
+                        <option value="9">beatXP Nuke</option>
+                        <option value="10">beatXP Sigma</option>
+                        <option value="11">beatXP Unbound</option>
+                        <option value="12">beatXP Vega</option>
+                        <option value="13">beatXP Vector</option>
+                        <option value="14">boAt Enigma</option>
+                        <option value="15">boAt Lunar</option>
+                        <option value="16">boAt Storm</option>
+                        <option value="17">boAt Ultima</option>
+                        <option value="18">boAt Wave</option>
+                        <option value="19">Boult Cosmic</option>
+                        <option value="20">Boult Craft</option>
+                        <option value="21">Boult Crown</option>
+                        <option value="22">Boult CrownR</option>
+                        <option value="23">Boult CrownX</option>
+                        <option value="24">Boult Drift</option>
+                        <option value="25">Boult Drift+</option>
+                        <option value="26">Boult Mirage</option>
+                        <option value="27">Boult Sterling</option>
+                        <option value="28">Boult Striker</option>
+                        <option value="29">Cult Ace</option>
+                        <option value="30">Cult Ranger</option>
+                        <option value="31">Cultsport Active</option>
+                        <option value="32">DIZO Watch</option>
+                        <option value="33">FEEL FLON</option>
+                        <option value="34">Fastrack FR1|1.39</option>
+                        <option value="35">Fastrack Optimus</option>
+                        <option value="36">Fastrack Revoltt</option>
+                        <option value="37">Fire-Boltt Apollo</option>
+                        <option value="38">Fire-Boltt Blizzard</option>
+                        <option value="39">Fire-Boltt Brillia</option>
+                        <option value="40">Fire-Boltt Celestia</option>
+                        <option value="41">Fire-Boltt Cobra</option>
+                        <option value="42">Fire-Boltt Combat</option>
+                        <option value="43">Fire-Boltt Cyclone</option>
+                        <option value="44">Fire-Boltt Destiny</option>
+                        <option value="45">Fire-Boltt Epic</option>
+                        <option value="46">Fire-Boltt Expedition</option>
+                        <option value="47">Fire-Boltt Grenade</option>
+                        <option value="48">Fire-Boltt Hunter</option>
+                        <option value="49">Fire-Boltt Hurricane</option>
+                        <option value="50">Fire-Boltt Hulk</option>
+                        <option value="51">Fire-Boltt Jewel</option>
+                        <option value="52">Fire-Boltt Legend</option>
+                        <option value="53">Fire-Boltt Ninja</option>
+                        <option value="54">Fire-Boltt Quest</option>
+                        <option value="55">Fire-Boltt Rise</option>
+                        <option value="56">Fire-Boltt Rock</option>
+                        
+                </select>     
+                    
+                <p id="par"><b>Select your desired Screen Size</b></p>
+                <select name="Screen_Size" id="second" required="required">
+                    <option value="Select Screen Size">Select Screen Size</option>
+                        <option value="1.3">1.3</option>
+                        <option value="1.32">1.32</option>
+                        <option value="1.38">1.38</option>
+                        <option value="1.39">1.39</option>
+                        <option value="1.4">1.4</option>
+                        <option value="1.43">1.43</option>
+                        <option value="1.44">1.44</option>
+                        <option value="1.45">1.45</option>
+                        <option value="1.46">1.46</option>
+                        <option value="1.52">1.52</option>
+                        <option value="1.54">1.54</option>
+                        <option value="1.69">1.69</option>
+                        <option value="1.7">1.7</option>
+                        <option value="1.75">1.75</option>
+                        <option value="1.78">1.78</option>
+                        <option value="1.8">1.8</option>
+                        <option value="1.83">1.83</option>
+                        <option value="1.85">1.85</option>
+                        <option value="1.9">1.9</option>
+                        <option value="1.91">1.91</option>
+                        <option value="1.92">1.92</option>
+                        <option value="1.95">1.95</option>
+                        <option value="1.96">1.96</option>
+                        <option value="1.99">1.99</option>
+                        <option value="2.0">2.0</option>
+                        <option value="2.01">2.01</option>
+                        <option value="2.04">2.04</option>
+                        <option value="2.09">2.09</option>
+                        <option value="2.1">2.1</option>
+                        <option value="2.2">2.2</option>
+                        <option value="32.5">32.5</option>
+                        <option value="33.02">33.02</option>
+                        <option value="33.5">33.5</option>
+                        <option value="35.3">35.3</option>
+                        <option value="36.3">36.3</option>
+                        <option value="39.1">39.1</option>
+                        <option value="40.6">40.6</option>
+                        <option value="45.2">45.2</option>
+                        <option value="46.5">46.5</option>
+                        <option value="48.5">48.5</option>
+                        <option value="49.5">49.5</option>
+                        <option value="49.7">49.7</option>
+                        <option value="51.1">51.1</option>
+                        <option value="51.3">51.3</option>
+                </select> 
+                
+                <p id="par"><b>Select the Calling system</b></p>
+                <select name="Calling_System" id="first" required="required">
+                    <option value="Select Calling System">Select Calling System</option>
+                    <option value="1">Yes</option>
+                    <option value="2">No</option>
+                </select>
+                <button type = "submit" id="btn">CLICK ME</button>
+                <h3 id="pred">The Smart Watch price is around :-  {{ prediction_text }}</h3>  
+        </form>
+
+
+        
+    </div>
+</body>
+</html>

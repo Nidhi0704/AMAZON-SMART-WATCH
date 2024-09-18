@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.1">
+    <title>Welcome To Car Price Prediction</title>
+    <link href=url("https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">)
+    <style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, Hervetica, sans-serif;
+        overflow-x: hidden;
+    }
+    .bg {
+        background-color: darkgrey;
+        background-image: url('static/OIP.jpeg');
+        backface-visibility: visible;
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .content {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -20%);
+        text-align: center;
+        color: gold;
+        width: 80%;
+    }
+
+    .btn-custom{
+        background-color: #007bff;
+        color: whitesmoke;
+        border: none;
+        padding: 15px 30px;
+        text-align: center;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 50px; /* makes it circular*/
+        transition: background-color 0.3s ease; /* smooth transition*/
+    }
+
+    .btn-custom:hover {
+        background-color: darkgrey; /* dark blue of hover*/
+    }
+
+    .shine {
+        display: inline-block;
+        position: relative;
+        color: white;
+        text-transform: uppercase;
+        font-size: 24px;
+        font-weight: bolder;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        margin-bottom: 20px;
+        overflow: visible;
+    }
+
+    .shine::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(120deg, rgba(255,255,255,0.4), rgba(255,255,255,0));
+        transform: skewX(-25deg);
+    }
+
+    .shine::before {
+        animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+        0% {
+            left: -75%;
+        }
+        100% {
+            left: -125%;
+        }
+    }
+
+    .shine-paragraph {
+        font-size: 18px;
+        text-shadow: 0 0 3px rgba(255,255,255,0.3);
+        margin-bottom: 30px;
+    }
+
+    .footer {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: larger;
+        font-weight: bolder;
+        color: black; /*changed footer text color to white*/
+
+    }
+    </style>
+</head>
+<body>
+    <div class="bg">
+        <div class="content">
+            <h1 class="shine"><b>Welcome to Smart Watch Price Predictor</b></h1>
+            <p class="shine shine-paragraph"> The smartwatch price prediction using a linear regression model involves analyzing how features such as strap color, calling system, and size fits influence the price of the smartwatch. By leveraging the linear regression technique, we can create a predictive model that estimates the price of a smartwatch based on these key attributes, aiding in making informed pricing decisions in the smartwatch market.</p>
+            <a href="/output"><button class="btn-custom">COMMENCE PREDICTION</button> </a>
+        </div>
+        <div class="footer">
+            Made By:-   NIDHI SHARMA.
+        </div>
+    </div>
+
+
+</body>
+</html>
+
